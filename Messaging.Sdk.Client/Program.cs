@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Messaging.Sdk.Client;
 using Messaging.Contracts;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 await CreateHostBuilder(args).Build().RunAsync();
 
@@ -20,7 +21,7 @@ static IHostBuilder CreateHostBuilder(string[] args) =>
             {
                 consumer.Add<UserEventCreatedConsumer>();
             });
-        });
+        }, Assembly.GetExecutingAssembly());
 
         services.AddHostedService<PublisherHostedService>();
     });

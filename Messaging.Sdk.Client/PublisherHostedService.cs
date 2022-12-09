@@ -22,8 +22,14 @@ namespace Messaging.Sdk.Client
         {
             var member = new UserEvent
             {
-                
+                Id = 1,
+                Email = "manuel@test.com",
+                FirstName = "Manuel",
+                LastName = "Pérez",
+                UserName = "manu"
             };
+
+            await Task.Delay(10000);
 
             await _bus.Publish(member, stoppingToken);
         }
